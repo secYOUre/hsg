@@ -8,11 +8,11 @@ It is here for my own reference.
 
 
 ---------------------------------------------------------------------
-From: Alfonso De Gregorio <adg@crypto.lo.gy <mailto:adg@crypto.lo.gy>
+From: Alfonso De Gregorio <adg@crypto.lo.gy>
 Date: May 7, 2008 6:46:52 AM PDT
-To: gsm@lists.segfault.net <mailto:gsm@lists.segfault.net>
+To: gsm@lists.segfault.net
 Subject: [gsm] Hopping Sequence Generator
-Reply-To: gsm@lists.segfault.net <mailto:gsm@lists.segfault.net>
+Reply-To: gsm@lists.segfault.net
 
 
 Hi,
@@ -22,8 +22,7 @@ hopping or wideband sampling), we'll need to know where to tune next.
 The hopping sequence generation  is specified in sect. 6.2.3 of  3GPP
 TS 05.02, where the standard describes how logical channels gets
 mapped onto physical channels. A copy of the document is available at:
-<http://ucesp.ws.binghamton.edu/xli/eece542/std/3gpp/GSM0502-8a0.doc 
-<http://ucesp.ws.binghamton.edu/%7Exli/eece542/std/3gpp/GSM0502-8a0.doc>>.
+<http://ucesp.ws.binghamton.edu/xli/eece542/std/3gpp/GSM0502-8a0.doc>.
 
 The pseudo-code is as follows (please, find the implementation in 
 attach):
