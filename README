@@ -1,0 +1,53 @@
+GSM Hopping Sequence Generator
+==============================
+
+
+This is an implementation of the GSM Hopping Sequence Generator,
+contributed to the GSM Project in 2008. 
+It is here for my own reference.
+
+
+---------------------------------------------------------------------
+From: Alfonso De Gregorio <adg@crypto.lo.gy <mailto:adg@crypto.lo.gy>
+Date: May 7, 2008 6:46:52 AM PDT
+To: gsm@lists.segfault.net <mailto:gsm@lists.segfault.net>
+Subject: [gsm] Hopping Sequence Generator
+Reply-To: gsm@lists.segfault.net <mailto:gsm@lists.segfault.net>
+
+
+Hi,
+
+whatever solution we'll come up with to channel hopping (ie, frequency
+hopping or wideband sampling), we'll need to know where to tune next.
+The hopping sequence generation  is specified in sect. 6.2.3 of  3GPP
+TS 05.02, where the standard describes how logical channels gets
+mapped onto physical channels. A copy of the document is available at:
+<http://ucesp.ws.binghamton.edu/xli/eece542/std/3gpp/GSM0502-8a0.doc 
+<http://ucesp.ws.binghamton.edu/%7Exli/eece542/std/3gpp/GSM0502-8a0.doc>>.
+
+The pseudo-code is as follows (please, find the implementation in 
+attach):
+
+if HSN == 0
+     MAI := (FN + MAIO) mod N
+  else
+     M   := (T2 + RNTABLE[HSN XOR ((T1 mod 64) + T3)])
+     M'  := (M mod 2^(INT(log2(N)+1)))
+     T'  := (T3 mod 2^(INT(log2(N)+1)))
+     if M' < N
+         S := M'
+     else
+         S := (M' + T') mod N
+     MAI := (MAIO + S) mod N
+
+  RFCHN := MA[MAI]
+
+Where:
+- The Frame Number is specified in terms of T1, T2 and T3 as received
+in the synchronization burst from the synchrnonization channel (SCH),
+FN :=  51 * ((T3-T2) mod 26) + T3 + 51 * 26 * T1
+- The Hopping Sequence Number (HSN) is a control parameter. With HSN =
+0 we have a cyclic hopping pattern; pseudo-random patterns are
+produced with 1<=HSN<=63.
+
+Cheers
